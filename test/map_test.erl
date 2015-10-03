@@ -17,24 +17,24 @@ map_test() ->
          %% Item = {N, span},
          %% push_until_ok(P1, Item, 0),
          timer:sleep(1),
-         ?assertEqual(ok, gen_paxos_map:put(P1, key, value)),
-         ?assertEqual(ok, gen_paxos_map:put(P2, key, value2)),
-         ?assertEqual(ok, gen_paxos_map:put(P1, key, value3)),
+         ?assertEqual(ok, put_until_ok(P1, key, value, 5)),
+         ?assertEqual(ok, put_until_ok(P2, key, value2, 5)),
+         ?assertEqual(ok, put_until_ok(P1, key, value3, 5)),
          timer:sleep(1),
-         ?assertMatch({ok, value3, _}, gen_paxos_map:get(P2, key))
+         ?assertMatch({ok, {value3, _}}, gen_paxos_map:get(P2, key))
      end || _N <- lists:seq(1, 200)],
 
     ok = gen_paxos_map:stop(P1),
     ok = gen_paxos_map:stop(P2).
 
-push_until_ok(P, Term, Count) ->
-    case gen_paxos_map:push(P, Term) of
+put_until_ok(P, K, V, Count) ->
+    case gen_paxos_map:put(P, K, V) of
         ok -> ok;
         {error, retry} ->
-            push_until_ok(P, Term, Count+1);
+            put_until_ok(P, K, V, Count+1);
         {error, conflict} ->
-            ?debugVal({conflict, Term}),
-            push_until_ok(P, Term, Count+1)
+            ?debugVal({conflict, K, V}),
+            put_until_ok(P, K, V, Count+1)
     end.
 
 pop_until_ok(P, Count) ->
