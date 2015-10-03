@@ -47,9 +47,9 @@
           controlling_process :: pid(),
 
           %% ballot store
-          oldest_live_ballot = 0, %% the last one not trimmed
-          latest_ballot_epoch = 0, %% latest unused
-          largest_ballot_epoch = 0, %% largest prepared ballot in buffer
+          oldest_live_ballot = 0 :: non_neg_integer(), %% the last one not trimmed
+          latest_ballot_epoch = 0 :: non_neg_integer(), %% latest unused
+          largest_ballot_epoch = 0 :: non_neg_integer(), %% largest prepared ballot in buffer
           ballot_buffer = ets:new(?MODULE, [ordered_set, private]) :: ets:tid()
          }).
 

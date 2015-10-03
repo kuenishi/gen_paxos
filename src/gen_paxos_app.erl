@@ -14,8 +14,3 @@ start(_StartType, _StartArgs) ->
 
 stop(_State) ->
     ok.
-
--ifdef(TEST).
-some_test() ->
-    ok.
--endif.
