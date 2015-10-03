@@ -24,13 +24,13 @@
 -define(SERVER, ?MODULE).
 
 -record(state, {
-          acceptors,
-          value,
-          done_fun,
-          initial_n,
-          n,
-          prepare_acks = [],
-          propose_acks = []
+          acceptors = [] :: [pid()],
+          value :: term(),
+          done_fun :: fun(),
+          initial_n :: non_neg_integer(),
+          n :: non_neg_integer(),
+          prepare_acks = [] :: list(),
+          propose_acks = [] :: list()
          }).
 
 %%%===================================================================

@@ -84,5 +84,3 @@ learner_test() ->
      end || P <- Acceptors],
     gen_paxos_proposer:stop(Pid),
     gen_paxos_learner:stop(L).
-    
-    
