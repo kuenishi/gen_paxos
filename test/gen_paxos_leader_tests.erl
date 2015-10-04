@@ -1,4 +1,4 @@
--module(leader_test).
+-module(gen_paxos_leader_tests).
 
 -compile(export_all).
 

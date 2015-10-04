@@ -1,4 +1,4 @@
--module(ballot_manager_test).
+-module(gen_paxos_ballot_manager_tests).
 
 -compile(export_all).
 

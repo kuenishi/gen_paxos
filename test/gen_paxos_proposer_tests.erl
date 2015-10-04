@@ -1,7 +1,8 @@
--module(basic_test).
+-module(gen_paxos_proposer_tests).
 
 -compile(export_all).
 
+-ifdef(TEST).
 -include_lib("eunit/include/eunit.hrl").
 
 single_acceptor_test() ->
@@ -84,3 +85,5 @@ learner_test() ->
      end || P <- Acceptors],
     gen_paxos_proposer:stop(Pid),
     gen_paxos_learner:stop(L).
+
+-endif.

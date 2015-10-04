@@ -1,4 +1,4 @@
--module(queue_test).
+-module(gen_paxos_queue_tests).
 -compile(export_all).
 
 -include_lib("eunit/include/eunit.hrl").
