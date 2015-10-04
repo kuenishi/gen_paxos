@@ -1,4 +1,4 @@
--module(gen_paxos_mas_tests).
+-module(gen_paxos_map_tests).
 -compile(export_all).
 
 -include_lib("eunit/include/eunit.hrl").

@@ -7,4 +7,4 @@ compile:
 	./rebar3 compile
 
 test:
-	./rebar3 eunit --dir=test,src
+	./rebar3 eunit
